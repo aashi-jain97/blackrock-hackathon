@@ -1,0 +1,21 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: blk-hacking-ind-aashi-jain
+    ports:
+      - "5477:5477"
+    environment:
+      - DB_PROVIDER=sqlite
+      - DB_PATH=/app/app.db
+
+  postgres:
+    image: postgres:16-alpine
+    profiles: ["postgres"]
+    environment:
+      - POSTGRES_DB=hackathon
+      - POSTGRES_USER=hackathon
+      - POSTGRES_PASSWORD=hackathon
+    ports:
+      - "5432:5432"

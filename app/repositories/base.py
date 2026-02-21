@@ -1,0 +1,9 @@
+from typing import Protocol
+
+
+class MetricsRepository(Protocol):
+    def initialize(self) -> None: ...
+
+    def save(self, endpoint: str, duration_ms: float, status: str) -> None: ...
+
+    def get_performance_snapshot(self) -> dict: ...
